@@ -1,0 +1,77 @@
+
+<% layout('/layout/boilerplate.ejs') -%>
+<body>
+    <div class="detail_main">
+        <div class="detail_submain">
+            <div class="details">
+                <p class="detail_title"><b><%= listings.title %></b></p>
+                <div class="detail_img">
+                    <div>
+                        <img src="<%= listings.photo %>" alt="<%= listings.title %>" id="detail_img1" class="raddius">
+                    </div>
+                    <div>
+                        <img src="<%= listings.photo %>" alt="<%= listings.title %>" id="detail_img2" class="raddius">
+                        <img src="<%= listings.photo %>" alt="<%= listings.title %>" id="detail_img2" class="raddius">
+                        <img src="<%= listings.photo %>" alt="<%= listings.title %>" id="detail_img2a" class="raddius">
+                        <img src="<%= listings.photo %>" alt="<%= listings.title %>" id="detail_img2a" class="raddius">
+                    </div>
+                </div>
+                
+                <p><%= listings.description %></p>
+                <p><%= listings.location %>,<%= listings.country %></p>
+                <p>&#8377;<%= listings.price %>/per guest</p>
+            </div>
+
+              
+            <div class="row">
+                <div class="col-6">
+                    <form action="/listings/<%=listings._id%>/edit" method="get">
+                        <button class="btn btn-danger">Edit</button>
+                    </form>
+                </div>
+                <div class="col-3">
+                    <form action="/listings/<%=listings._id%>?_method=DELETE" method="post">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <hr>
+    <div class="detail_extra">
+        <div>
+            <p><b><i class="fa-solid fa-heart fa-lg"></i> Get to know my dear Ellie <%= listings.title %></b></p>
+            <p>Check out her goggles, flip through her Adventure Book, read her love letters.</p>
+    
+            <p><b><i class="fa-regular fa-face-grin-hearts fa-lg"></i> Go on a Wilderness Adventure</b></p>
+            <p>Head into the wild to earn Wilderness Explorer badges. I’m too tired for that.</p>
+    
+            <p><b><i class="fa-solid fa-bed fa-lg"></i> Have a totally ‘90s sleepover</b></p>
+            <p>Stay in one of our dorms, including my awesome bedroom.</p>
+    
+            <p><b><i class="fa-solid fa-person-swimming fa-lg"></i> Practise yoga with ocean views</b></p>
+            <p>Enjoy a morning workout and breakfast on a luxurious deck.</p>
+        </div>
+    </div>
+    <hr>
+    <div class="whatull">
+        <p>What you’ll do</p>
+        <p>Take a look around. But don’t touch anything, I just straightened up! Pretty nice, eh? This place used to be a dump but we fixed it up, my wonderful Ellie and me. Decorated it with stuff from all the trips we planned to take. I’m a bit old for adventure nowadays, but I know it’s still out there, especially if you stay here—but just for one night, don't get too comfy. Say, if you are lucky enough to stay here, you could start your own collection of badges, travel mementos, trinkets…you know, stuff to remind you of your own adventures. I suppose I could help you with that. Ellie was the best adventurer, so you’ve got big shoes to fill.</p>
+        <p>You’ll arrive as Junior Wilderness Explorers and endure mini adventures to earn these badges.</p>
+        <ul>
+            <li>Caretaker: Do chores like fetching the mail and minding my house. Someone’s gotta do it, might as well be you.</li>
+            <li>Daydreamer: Do a group activity to create your very own Adventure Book. Hope you like groups, as much as I don’t like them.</li>
+            <li>Homebody: Pack lunches for a picnic experience on the lawn. Heard it’s charming, but I wouldn’t know.</li>
+            <li>Adventurer: Head out for wilderness excursions while the sun’s up.</li>
+            <li>Stargazer: Gather on the lawn to explore the night sky. This was one of Ellie’s favorite things to do.</li>
+            <li>Sleepyhead: Reflect on your adventures and catch some shut-eye before your morning excursion.</li>
+            <li>Early-riser: Enjoy the greatest breakfast in the world: bran flakes. Then go on an exciting outing, and come back to a special surprise before you depart.</li>
+        </ul>
+        <p>Other things to note</p>
+        <p><strong>Airbnb brought Carl and Ellie’s house to life to celebrate the 15th anniversary of Up. For another adventure, catch Inside Out 2 on June 14 in theaters everywhere.</strong></p>
+        <p>Requests to book close at 11:59 PM PT on May 13, 2024.</p>
+    </div>
+    
+</body>
+

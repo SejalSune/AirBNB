@@ -1,0 +1,17 @@
+<% layout('/layout/boilerplate.ejs') -%>
+<body>
+    <div class="main-body">
+        <% for(let list of alllisting)  { %>
+            <a href="/listings/<%= list._id %>" style="text-decoration: none;">
+                <div class="card" style="width: 18rem;">
+                    <img src="<%=list.photo%>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text"><b><%=list.title%></b></p>
+                        <p class="card-text"><%=list.location%>, <%=list.country%></p>
+                        <p class="card-text">&#8377;<%=list.price%>/per guest</p>
+                    </div>
+                </div>
+            </a>
+        <% } %>
+    </div>
+</body>
