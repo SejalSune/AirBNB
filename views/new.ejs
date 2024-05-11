@@ -2,8 +2,8 @@
 <body>
    <div class="edit_me">
     <div>
-        <form action="/listings" method="POST">
-            <p class="title_change">New Listing Create</p>
+        <form action="/listings" method="POST" enctype="multipart/form-data">
+            <p class="title_change">Ready to Airbnb it?</p>
             <label for="title">Title:</label>
             <input type="text" id="title" name="listing[title]" placeholder="Title"><br>
         
@@ -11,7 +11,7 @@
             <input type="text" id="description" name="listing[description]" placeholder="Description"><br>
         
             <label for="photo">Photo URL:</label>
-            <input type="text" id="photo" name="listing[photo]" placeholder="Photo URL"><br>
+            <input type="file" id="photo" name="listing[photo]" placeholder="Photo URL"><br>
         
             <label for="location">Location:</label>
             <input type="text" id="location" name="listing[location]" placeholder="Location"><br>

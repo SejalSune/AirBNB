@@ -222,8 +222,8 @@ footer p {
     margin: 5px 0;
     font-size: 14px;
 }
-/* edit page */
 
+/* edit page */
 form {
     padding: 20px;
 }
@@ -234,6 +234,7 @@ label {
 }
 
 input[type="text"],
+input[type="file"],
 textarea {
     width: 100%;
     padding: 8px;
@@ -258,4 +259,13 @@ textarea {
 .title_change {
     font-size: 2rem;
     font-weight: 600;
+}
+
+ /* flash */
+.contain {
+    display: flex;
+    justify-content: center;
+}
+.alert {
+    width: 40%;
 }
