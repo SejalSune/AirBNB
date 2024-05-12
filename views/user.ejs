@@ -1,0 +1,110 @@
+<% layout('/layout/boileruser.ejs') -%>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    a {
+        text-decoration: none;
+    }
+    .userr {
+        display: flex;
+        height: 100vh;
+    }
+
+    .loginn, .signupp {
+        flex: 1;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .edit_me {
+        margin-bottom: 20px;
+    }
+
+    .title_change {
+        font-size: 40px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #dc3545;
+        color: white;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #c82333;
+        color: white;
+    }
+
+    .signupp {
+        text-align: center;
+        margin-top: 10rem;
+    }
+
+    .signupp p {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    .edit_me div form div {
+        display: flex;
+        justify-content: space-between;
+        margin: 15px 0 20px 0;
+    }
+    .icon {
+        font-size: 20px;
+    }
+    .signupp p b{
+        font-size: 40px;
+    }
+</style>
+
+<div class="userr">
+    <div class="loginn">
+        <div class="edit_me">
+            <div>
+                <form action="/login" method="POST">
+                    <p class="title_change">Log in with</p>
+                    <div>
+                        <div class="icon"><i class="fa-brands fa-facebook fa-2xl"></i></div>
+                        <div class="icon"><i class="fa-brands fa-twitter fa-2xl"></i></div>
+                        <div class="icon"><i class="fa-brands fa-square-instagram fa-2xl"></i></div>
+                    </div>
+                    <p>Or use username</p>
+                    <input type="text" id="username" name="username" placeholder="Username"><br>
+                
+                    <input type="password" id="password" name="password" placeholder="Password"><br>
+                    <p>forgot your password?</p>
+                    <button class="btn">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="signupp">
+        <p><b>Hi There!</b></p>
+        <p>If you don't have an account, you can Sign Up here!</p>
+        <a href="/signup"><button class="btn">Signup</button></a>
+    </div>
+</div>

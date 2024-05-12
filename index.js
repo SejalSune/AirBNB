@@ -10,8 +10,12 @@ const ejs=require("ejs");
 const listing = require("./models/listing");
 const path=require("path");
 const methodOverride = require('method-override');
-var session = require('express-session');
-var flash = require('connect-flash');
+const session = require('express-session');
+const flash = require('connect-flash');
+// user 
+const User=require("./models/user");
+const passport=require("passport");
+const LocalStrategy=require("passport-local");
 
 app.engine('ejs', engine);
 app.set('view engine', 'ejs'); 
@@ -20,6 +24,10 @@ app.use(express.static('views'));
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,"/public")));
 app.use(flash());  // flash messages
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use(session({
     secret: 'keyboard cat',
@@ -31,6 +39,30 @@ app.use((req,res,next)=>{
     res.locals.msg=req.flash("success");
     next();
 });
+
+
+// username and password 
+app.get("/user",(req,res)=>{
+    res.render("user.ejs");
+});
+
+app.get("/signup",async(req,res)=> {
+    res.render("signup.ejs");
+});
+
+app.post("/signup", async (req,res)=> {
+    let {username,email,password}=req.body;
+    let newuser=new User({email,username});
+    await User.register(newuser, password);
+    console.log(newuser);
+    res.redirect("/listings");
+});
+
+app.get("/login",(req,res)=>{
+    res.render("login.ejs");
+});
+
+app.post('/login', passport.authenticate('local', { failureRedirect: '/signup' }), (req, res)=> { res.redirect("/listings") });
 
 // alllisting route 
 app.get("/listings",async (req,res)=>{

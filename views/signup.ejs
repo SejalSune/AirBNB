@@ -1,0 +1,21 @@
+<% layout('/layout/boilerplate.ejs') -%>
+<body>
+   <div class="edit_me">
+    <div>
+        <form action="/signup" method="POST">
+            <p class="title_change">Signup in Airbnb</p>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="username"><br>
+        
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="email"><br>
+        
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="password"><br>
+        
+            <button class="btn btn-danger">Submit</button>
+        </form>
+    </div>
+   </div>
+</body>
+

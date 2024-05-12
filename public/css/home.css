@@ -112,6 +112,7 @@ nav {
 }
 .card-body {
     padding-top: 0.3px;
+    padding-left: 0;
 }
 
 .thirdpart p a {
@@ -235,6 +236,7 @@ label {
 
 input[type="text"],
 input[type="file"],
+input[type="password"],
 textarea {
     width: 100%;
     padding: 8px;
@@ -268,4 +270,11 @@ textarea {
 }
 .alert {
     width: 40%;
+}
+.locate {
+    color: gray;
+}
+
+body {
+    margin: 20px 0 0 0;
 }
