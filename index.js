@@ -16,7 +16,7 @@ const flash = require('connect-flash');
 const User=require("./models/user");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
-
+const passportlM=require('passport-local-mongoose');
 app.engine('ejs', engine);
 app.set('view engine', 'ejs'); 
 app.use(methodOverride('_method'));
@@ -37,6 +37,8 @@ app.use(session({
 
 app.use((req,res,next)=>{
     res.locals.msg=req.flash("success");
+    res.locals.msg=req.flash("error");
+    res.locals.curruser=req.user;
     next();
 });
 
@@ -72,7 +74,12 @@ app.get("/listings",async (req,res)=>{
 
 //new route 
 app.get("/listings/new", async (req,res)=> {
-    res.render("new.ejs");
+    if(req.isAuthenticated()){
+        res.render("new.ejs");
+    } else {
+        req.flash("error","you are not loggedin");
+        res.render("/listings");
+    }
 });
 
 //edit form
