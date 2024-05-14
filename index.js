@@ -12,6 +12,7 @@ const path=require("path");
 const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
+const ExpressError=require("./ExpressError");
 // user 
 const User=require("./models/user");
 const passport=require("passport");
@@ -23,14 +24,14 @@ app.use(methodOverride('_method'));
 app.use(express.static('views'));
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,"/public")));
-app.use(flash());  // flash messages
+app.use(flash());
 
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use(session({
-    secret: 'keyboard cat',
+    secret: process.env.secret,
     resave: false,
     saveUninitialized: true,
 }));
@@ -74,12 +75,11 @@ app.get("/listings",async (req,res)=>{
 
 //new route 
 app.get("/listings/new", async (req,res)=> {
-    if(req.isAuthenticated()){
+        if(!req.isAuthenticated()){
+            req.flash("error","you must login");
+            res.redirect("/listings");
+        }
         res.render("new.ejs");
-    } else {
-        req.flash("error","you are not loggedin");
-        res.render("/listings");
-    }
 });
 
 //edit form
@@ -107,7 +107,7 @@ app.delete("/listings/:id",async (req,res) => {
 
 // new data add 
 app.post("/listings",upload.single('listing[photo]'), async (req, res, next) => {
-    let URL=req.file.path;
+    // let URL=req.file.path;
     let newlisting=await new listing(req.body.listing);
     newlisting.photo=URL;
     await newlisting.save();
@@ -121,6 +121,11 @@ app.get("/listings/:id",async (req,res)=>{
     let listings=await listing.findById(id);
     res.render("detail.ejs",{listings});
 });
+
+// app.use((req,res,err,next)=>{
+//    let {status=500, message="something went wrong"}=err;
+//    res.status(status).send(message);
+// });
 
 // details route
 app.use(async (req,res)=>{

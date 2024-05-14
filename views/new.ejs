@@ -2,29 +2,99 @@
 <body>
    <div class="edit_me">
     <div>
-        <form action="/listings" method="POST" enctype="multipart/form-data">
+        <form action="/listings" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             <p class="title_change">Ready to Airbnb it?</p>
-            <label for="title">Title</label>
-            <input type="text" id="title" name="listing[title]" placeholder="Title"><br>
+            <div>
+                <label for="title" class="form-label">Title</label>
+                <input type="text" id="title" name="listing[title]" placeholder="Title" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a title.
+                </div>
+            </div>
         
-            <label for="description">Description</label>
-            <input type="text" id="description" name="listing[description]" placeholder="Description"><br>
+            <div>
+                <label for="description" class="form-label">Description</label>
+                <input type="text" id="description" name="listing[description]" placeholder="Description" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a description.
+                </div>
+            </div>
         
-            <label for="photo">Photo URL</label>
-            <input type="file" id="photo" name="listing[photo]" placeholder="Photo URL"><br>
+            <div>
+                <label for="photo" class="form-label">Photo URL</label>
+                <input type="file" id="photo" name="listing[photo]" placeholder="Photo URL" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please upload a photo.
+                </div>
+            </div>
         
-            <label for="location">Location</label>
-            <input type="text" id="location" name="listing[location]" placeholder="Location"><br>
+            <div>
+                <label for="location" class="form-label">Location</label>
+                <input type="text" id="location" name="listing[location]" placeholder="Location" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a location.
+                </div>
+            </div>
         
-            <label for="country">Country</label>
-            <input type="text" id="country" name="listing[country]" placeholder="Country"><br>
+            <div>
+                <label for="country" class="form-label">Country</label>
+                <input type="text" id="country" name="listing[country]" placeholder="Country" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a country.
+                </div>
+            </div>
         
-            <label for="price">Price</label>
-            <input type="text" id="price" name="listing[price]" placeholder="Price"><br>
+            <div>
+                <label for="price" class="form-label">Price</label>
+                <input type="number" id="price" name="listing[price]" placeholder="Price" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a price.
+                </div>
+            </div>
         
             <button class="btn btn-danger">Submit</button>
         </form>
     </div>
    </div>
-</body>
 
+   <script>
+                // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+            }, false)
+        })
+        })()
+   </script>
+
+</body>
