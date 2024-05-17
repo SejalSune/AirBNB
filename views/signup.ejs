@@ -1,52 +1,124 @@
-<% layout('/layout/boilerplate.ejs') -%>
-<style>
-    form {
-    padding: 20px;
-    }
+<% layout('layout/boilerplate') -%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup in Airbnb</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
 
-    label {
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
+        form {
+            padding: 20px;
+            max-width: 100%;
+        }
 
-    input[type="text"],
-    input[type="file"],
-    input[type="password"] {
-        width: 55rem;
-        padding: 8px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-    .edit_me {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .title_change {
-    font-size: 2rem;
-    font-weight: 600;
-    }
-</style>
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .edit_me {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .title_change {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            input[type="text"],
+            input[type="file"],
+            input[type="password"] {
+                width: 100%;
+            }
+
+            .title_change {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            form {
+                padding: 10px;
+            }
+
+            input[type="text"],
+            input[type="file"],
+            input[type="password"] {
+                padding: 6px;
+            }
+
+            .title_change {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
 <body>
-   <div class="edit_me">
-    <div>
-        <form action="/signup" method="POST">
-            <p class="title_change">Signup in Airbnb</p>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="username"><br>
-        
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" placeholder="email"><br>
-        
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="password"><br>
-        
-            <button class="btn btn-danger">Submit</button>
-        </form>
-    </div>
+   <div class="edit_me container">
+        <div>
+            <form action="/signup" method="POST" class="needs-validation" novalidate>
+                <p class="title_change">Signup in Airbnb</p>
+
+                <div>
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" name="username" placeholder="username" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Please enter a username.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div>
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" id="email" name="email" placeholder="email" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Please enter an email.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div>
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" placeholder="password" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Please enter a password.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <button class="btn btn-danger">Submit</button>
+            </form>
+        </div>
    </div>
 </body>
-
+</html>

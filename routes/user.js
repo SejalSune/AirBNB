@@ -29,9 +29,21 @@ router.post("/signup",asyncwrap (async (req,res,next)=> {
 }));
 
 router.get("/login",(req,res)=>{
-    res.render("login.ejs");
+    res.send("login.ejs");
 });
 
-router.post('/login', passport.authenticate('local', { failureRedirect: '/signup' }), (req, res)=> { res.redirect("/listings") });
+router.post('/login', passport.authenticate('local', { failureRedirect: '/signup' }), (req, res)=> { 
+    res.redirect("/listings") 
+});
+
+router.get("/logout",(req,res,next)=>{
+    req.logout((err)=>{
+        if(err){
+            return next(err);
+        }
+        req.flash("success","logged out successfully");
+        res.redirect("/listings");
+    });
+});
 
 module.exports=router;
