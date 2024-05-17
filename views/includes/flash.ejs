@@ -1,9 +1,37 @@
-<% if (msg && msg.length) {%>
+<style>
+        /* flash */
+    .contain {
+        display: flex;
+        justify-content: center;
+    }
+    .alert {
+        width: 40%;
+    }
+    .locate {
+        color: gray;
+    }
+
+    body {
+        margin: 20px 0 0 0;
+    }
+</style>
+
+<% if (Successmsg && Successmsg.length) {%>
 <div class="contain">
     <div class="alert alert-success d-flex align-items-center flashmsg" role="alert">
         <div>
-            <i class="fa-solid fa-circle-check"></i> <%= msg %>
+            <i class="fa-solid fa-circle-check"></i> <%= Successmsg %>
         </div>
     </div>
 </div>
+<% } %>
+
+<% if (Errormsg && Errormsg.length) {%>
+    <div class="contain">
+        <div class="alert alert-danger d-flex align-items-center flashmsg" role="alert">
+            <div>
+                <i class="fa-solid fa-triangle-exclamation"></i> <%= Errormsg %>
+            </div>
+        </div>
+    </div>
 <% }%>

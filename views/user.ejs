@@ -1,7 +1,6 @@
 <% layout('/layout/boileruser.ejs') -%>
-
 <style>
-    body {
+         body {
         font-family: Arial, sans-serif;
     }
     a {
@@ -79,8 +78,35 @@
     .signupp p b{
         font-size: 40px;
     }
-</style>
 
+    form {
+    padding: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 37rem;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .edit_me {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .edit_me div {
+        width: 60%
+    }
+</style>
 <div class="userr">
     <div class="loginn">
         <div class="edit_me">
